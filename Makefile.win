@@ -1,0 +1,84 @@
+# Project: Spario
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = Spario_private.res
+OBJ  = spario.o lib/t_display/display.o lib/t_filehandling/filehandling.o lib/t_keyboard/keyboard.o lib/t_sound/sound.o lib/t_map/map.o lib/p_vector/point.o lib/p_vector/vector.o lib/t_obj/obj.o lib/t_debug/debug.o lib/t_rect/rect.o lib/t_timer/timer.o lib/t_cameracontroller/cameracontroller.o lib/t_gameobjcontroller/gameobjcontroller.o lib/t_physics/physics.o lib/t_mapobjtrans/mapobjtrans.o lib/t_playercontroller/playercontroller.o lib/sdl_collide/SDL_collide.o $(RES)
+LINKOBJ  = spario.o lib/t_display/display.o lib/t_filehandling/filehandling.o lib/t_keyboard/keyboard.o lib/t_sound/sound.o lib/t_map/map.o lib/p_vector/point.o lib/p_vector/vector.o lib/t_obj/obj.o lib/t_debug/debug.o lib/t_rect/rect.o lib/t_timer/timer.o lib/t_cameracontroller/cameracontroller.o lib/t_gameobjcontroller/gameobjcontroller.o lib/t_physics/physics.o lib/t_mapobjtrans/mapobjtrans.o lib/t_playercontroller/playercontroller.o lib/sdl_collide/SDL_collide.o $(RES)
+LIBS =  -L"lib" -lmingw32 -lSDLmain -lSDL_ttf -lSDL -lSDL_mixer -lSDL_image  -mwindows -s 
+INCS =  -I"include" 
+CXXINCS =  -I"lib/gcc/mingw32/3.4.2/include"  -I"include/c++/3.4.2/backward"  -I"include/c++/3.4.2/mingw32"  -I"include/c++/3.4.2"  -I"include" 
+BIN  = bin/Spario.exe
+CXXFLAGS = $(CXXINCS)   -fexpensive-optimizations -O3 -mwindows
+CFLAGS = $(INCS)   -fexpensive-optimizations -O3 -mwindows
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before bin/Spario.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "bin\Spario.exe" $(LIBS)
+
+spario.o: spario.cpp
+	$(CPP) -c spario.cpp -o spario.o $(CXXFLAGS)
+
+lib/t_display/display.o: lib/t_display/display.cpp
+	$(CPP) -c lib/t_display/display.cpp -o lib/t_display/display.o $(CXXFLAGS)
+
+lib/t_filehandling/filehandling.o: lib/t_filehandling/filehandling.cpp
+	$(CPP) -c lib/t_filehandling/filehandling.cpp -o lib/t_filehandling/filehandling.o $(CXXFLAGS)
+
+lib/t_keyboard/keyboard.o: lib/t_keyboard/keyboard.cpp
+	$(CPP) -c lib/t_keyboard/keyboard.cpp -o lib/t_keyboard/keyboard.o $(CXXFLAGS)
+
+lib/t_sound/sound.o: lib/t_sound/sound.cpp
+	$(CPP) -c lib/t_sound/sound.cpp -o lib/t_sound/sound.o $(CXXFLAGS)
+
+lib/t_map/map.o: lib/t_map/map.cpp
+	$(CPP) -c lib/t_map/map.cpp -o lib/t_map/map.o $(CXXFLAGS)
+
+lib/p_vector/point.o: lib/p_vector/point.cpp
+	$(CPP) -c lib/p_vector/point.cpp -o lib/p_vector/point.o $(CXXFLAGS)
+
+lib/p_vector/vector.o: lib/p_vector/vector.cpp
+	$(CPP) -c lib/p_vector/vector.cpp -o lib/p_vector/vector.o $(CXXFLAGS)
+
+lib/t_obj/obj.o: lib/t_obj/obj.cpp
+	$(CPP) -c lib/t_obj/obj.cpp -o lib/t_obj/obj.o $(CXXFLAGS)
+
+lib/t_debug/debug.o: lib/t_debug/debug.cpp
+	$(CPP) -c lib/t_debug/debug.cpp -o lib/t_debug/debug.o $(CXXFLAGS)
+
+lib/t_rect/rect.o: lib/t_rect/rect.cpp
+	$(CPP) -c lib/t_rect/rect.cpp -o lib/t_rect/rect.o $(CXXFLAGS)
+
+lib/t_timer/timer.o: lib/t_timer/timer.cpp
+	$(CPP) -c lib/t_timer/timer.cpp -o lib/t_timer/timer.o $(CXXFLAGS)
+
+lib/t_cameracontroller/cameracontroller.o: lib/t_cameracontroller/cameracontroller.cpp
+	$(CPP) -c lib/t_cameracontroller/cameracontroller.cpp -o lib/t_cameracontroller/cameracontroller.o $(CXXFLAGS)
+
+lib/t_gameobjcontroller/gameobjcontroller.o: lib/t_gameobjcontroller/gameobjcontroller.cpp
+	$(CPP) -c lib/t_gameobjcontroller/gameobjcontroller.cpp -o lib/t_gameobjcontroller/gameobjcontroller.o $(CXXFLAGS)
+
+lib/t_physics/physics.o: lib/t_physics/physics.cpp
+	$(CPP) -c lib/t_physics/physics.cpp -o lib/t_physics/physics.o $(CXXFLAGS)
+
+lib/t_mapobjtrans/mapobjtrans.o: lib/t_mapobjtrans/mapobjtrans.cpp
+	$(CPP) -c lib/t_mapobjtrans/mapobjtrans.cpp -o lib/t_mapobjtrans/mapobjtrans.o $(CXXFLAGS)
+
+lib/t_playercontroller/playercontroller.o: lib/t_playercontroller/playercontroller.cpp
+	$(CPP) -c lib/t_playercontroller/playercontroller.cpp -o lib/t_playercontroller/playercontroller.o $(CXXFLAGS)
+
+lib/sdl_collide/SDL_collide.o: lib/sdl_collide/SDL_collide.cpp
+	$(CPP) -c lib/sdl_collide/SDL_collide.cpp -o lib/sdl_collide/SDL_collide.o $(CXXFLAGS)
+
+Spario_private.res: Spario_private.rc 
+	$(WINDRES) -i Spario_private.rc --input-format=rc -o Spario_private.res -O coff 
